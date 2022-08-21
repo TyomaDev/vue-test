@@ -1,0 +1,15 @@
+/* Global props */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body{
+    background-color: rgb(238, 238, 238);  
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+}
