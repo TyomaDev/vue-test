@@ -16,4 +16,7 @@ yarn build
 ```
 
 
+```
+Start the work at 4 p.m. 08.21.2022
+```
 
