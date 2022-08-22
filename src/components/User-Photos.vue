@@ -1,48 +1,64 @@
 <template>
 
   <div class="MainPhotos">
-    <!-- gallery -->
-    <div v-if="ImgisOpen === null" class="PhotosBlock">
-      <div class="OnePhotoBlock" v-for="Photo in addedPhotos" v-on:click="openPhoto(Photo.id)">
-        <img v-bind:src="Photo.url" alt="Photo">
-        <h3>id: {{Photo.id}}</h3>
-      </div>
-    </div>
-    <!-- one photo -->
-    <div v-else class="OnePhotoOpen">
-        <img v-bind:src="openedPhoto.url" alt="Photo">
-        <h1 v-on:click="closePhoto()">&#10006;</h1>
-        <div>
-          <h3>Comment</h3>
-          <textarea v-model="textAreaPhoto"></textarea>
-          <p>Write a few sentences about the photo.</p>
+    <!-- loader -->
+      <loader v-if="loading"/>
+    <!-- /loader -->
+    <!-- show -->
+    <div v-else>
+      <!-- gallery -->
+      <div v-if="ImgisOpen === null" class="PhotosBlock">
+        <div class="OnePhotoBlock" v-for="Photo in addedPhotos" v-on:click="openPhoto(Photo.id)">
+          <img v-bind:src="Photo.url" alt="Photo">
+          <h3>id: {{Photo.id}}</h3>
         </div>
-        <button v-on:click="sendCom">Save</button>
+      </div>
+      <!-- one photo -->
+      <div v-else class="OnePhotoOpen">
+          <img v-bind:src="openedPhoto.url" alt="Photo">
+          <h1 v-on:click="closePhoto()">&#10006;</h1>
+          <div>
+            <h3>Comment</h3>
+            <textarea v-model="textAreaPhoto"></textarea>
+            <p>Write a few sentences about the photo.</p>
+          </div>
+          <button v-on:click="sendCom">Save</button>
+      </div>
+      <!-- /show -->
     </div>
   </div>
 
 </template>
 <script>
+
 import axios from 'axios'
+import loader from '@/components/loader.vue'
 const url = 'https://boiling-refuge-66454.herokuapp.com/images'
+
 export default {
   data(){
     return{
       ImgisOpen: null,
       addedPhotos: [],
       openedPhoto:  [],
-      textAreaPhoto: ''
-    
+      textAreaPhoto: '',
+      loading: true
+
     }
   },
+  components:{
+    loader
+  },
   mounted(){
-    axios.get(url).then(response => this.addedPhotos = response.data)
+    axios.get(url).then(response => this.addedPhotos = response.data).then(setTimeout(() => {this.loading = false}, "500"))
   },
   
   methods: {
     openPhoto(id){
+      this.loading = true
+      
       this.ImgisOpen = id,
-      axios.get(url + '/' + this.ImgisOpen).then(response => this.openedPhoto = response.data) 
+      axios.get(url + '/' + this.ImgisOpen).then(response => this.openedPhoto = response.data).then(setTimeout(() => {this.loading = false}, "500"))
       
     },
     closePhoto(){
