@@ -58,7 +58,7 @@ export default {
       this.loading = true
       
       this.ImgisOpen = id,
-      axios.get(url + '/' + this.ImgisOpen).then(response => this.openedPhoto = response.data).then(setTimeout(() => {this.loading = false}, "500"))
+      axios.get(url + '/' + this.ImgisOpen).then(response => this.openedPhoto = response.data).then(setTimeout(() => {this.loading = false}, "300"))
       
     },
     closePhoto(){
