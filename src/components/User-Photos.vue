@@ -175,4 +175,93 @@ h1:hover{
   background-color: rgb(95, 95, 95);
   transition:background-color 0.3s;
 }
+
+/* media */
+@media screen and (max-width: 1440px){
+    .InfoBlock{
+        width: 80%;
+    }
+    .InfoBlock>img{
+      width: 80%;
+      margin: 0 auto;
+    }
+    .InfoBlock__User>div{
+      margin-left: 15rem !important;
+    }
+    /*  */
+    .PhotosBlock{
+        width: 100%;
+        margin-top: 2.5rem;
+        display: flex;
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+    .OnePhotoBlock{
+        margin: 1rem 2rem;
+    }
+    
+}
+@media screen and (max-width: 1200px){
+    .InfoBlock{
+        width: 100%;
+    }
+    .InfoBlock>img{
+      width: 100%;
+      margin: 0 auto;
+    }
+    .InfoBlock__User>div{
+      margin-left: 5rem !important;
+    }  
+}
+@media screen and (max-width: 768px){
+    .InfoBlock{
+        width: 100%;
+    }
+    .InfoBlock>img{
+      object-fit: cover;	
+      width: 100%;
+      height: 150px;
+
+      margin: 0 auto;
+    }
+    .InfoBlock__User{
+      width: 100%;
+      margin-top: 1rem;
+      display: flex !important;
+      flex-flow: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    .InfoBlock__User>img{
+      width: 7rem; 
+      margin-top: -5rem;
+    }
+    .InfoBlock__User>h2{
+      margin-left: 0 !important;
+    }
+    .InfoBlock__User>div{
+      margin-left: 0 !important;
+    }  
+    .OnePhotoBlock {
+    width: 60%;
+    margin: 1rem auto;
+    }
+    .OnePhotoOpen>img{
+    width: 15rem;
+    height: 15rem;
+    margin: 1rem auto;
+    border-radius: 6px;
+    }
+    .OnePhotoOpen>div {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2rem;
+    }
+    h1{
+      top: auto;
+      bottom: 15px !important;
+      right: 15px;
+    }
+}
 </style>
